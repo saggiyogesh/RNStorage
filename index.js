@@ -19,7 +19,7 @@ function save(key, value) {
 }
 
 function load(key) {
-  return _store[key];
+  return decodeURIComponent(_store[key]);
 }
 
 function remove(key) {
