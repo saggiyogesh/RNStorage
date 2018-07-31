@@ -1,4 +1,9 @@
-import { AsyncStorage } from 'react-native';
+let AsyncStorage;
+
+try {
+  ({ AsyncStorage } = require('react-native'));
+} catch (err) {}
+
 const autoLoadKeys = ['id_token', 'access_token', 'me'];
 
 const _store = {};
