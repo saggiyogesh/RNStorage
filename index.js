@@ -7,24 +7,30 @@ async function init() {
   try {
     for (const key of autoLoadKeys) {
       _store[key] = await AsyncStorage.getItem(key);
+      console.log('RN storage init', key, _store[key]);
     }
   } catch (err) {
     console.log('RN Strorage, err: ', err);
   }
 }
 
-function save(key, value) {
+function save(key, value, persist = true) {
   _store[key] = value;
-  AsyncStorage.setItem(key, value).catch(e => console.log('RNStrorage,  err save', e));
+  // console.log('RN storage save', key, value);
+  if (persist) {
+    AsyncStorage.setItem(key, value).catch(e => console.log('RNStrorage,  err save', e));
+  }
 }
 
 function load(key) {
-  return decodeURIComponent(_store[key]);
+  return decodeURIComponent(_store[key] || '');
 }
 
 function remove(key) {
   delete _store[key];
-  AsyncStorage.removeItem(key).catch(e => console.log('RNStrorage,  err remove', e));
+  AsyncStorage.removeItem(key)
+    .then(m => 'Item removed', key)
+    .catch(e => console.log('RNStrorage,  err remove', e));
 }
 
 function loadAll() {
