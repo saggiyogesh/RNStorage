@@ -1,7 +1,8 @@
 let AsyncStorage;
 
 try {
-  ({ AsyncStorage } = require('react-native'));
+  const RN = require('react-native');
+  AsyncStorage = RN.AsyncStorage;
 } catch (err) {}
 
 const autoLoadKeys = ['id_token', 'access_token', 'me'];
