@@ -28,8 +28,12 @@ function save(key, value, persist = true) {
   }
 }
 
+function loadPlain(key) {
+  return _store[key];
+}
+
 function load(key) {
-  return decodeURIComponent(_store[key] || '');
+  return decodeURIComponent(loadPlain(key) || '');
 }
 
 function remove(key) {
@@ -43,4 +47,4 @@ function loadAll() {
   return _store;
 }
 
-export default { save, load, loadAll, remove, init };
+export default { save, load, loadAll, remove, init, loadPlain };
