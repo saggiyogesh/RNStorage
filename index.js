@@ -5,7 +5,7 @@ try {
   AsyncStorage = RN.AsyncStorage;
 } catch (err) {}
 
-const autoLoadKeys = ['id_token', 'access_token', 'me'];
+const autoLoadKeys = ['id_token', 'access_token', 'me', 'fcmToken';
 
 const _store = {};
 
